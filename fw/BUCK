@@ -1,0 +1,13 @@
+remote_file(
+    name = 'Lookback_Remote',
+    url = 'https://s3-eu-west-1.amazonaws.com/lookback-public/sdk/lookback-sdk-1.1.4.zip',
+    sha1 = '3efc78adf110478b7db3983f531cd3e8eeea71a7'
+)
+
+genrule(
+    name = 'Lookback',
+    srcs = [':Lookback_Remote'],
+    cmd = 'unzip $SRCS && mv lookback/Safe/Lookback.framework $OUT',
+    out = 'Lookback.framework',
+    visibility = ['PUBLIC']
+)
